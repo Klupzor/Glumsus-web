@@ -93,7 +93,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             title: 'Glumsus',
-            template: './src/html/index.html',
+            template: './src/bin/index.html',
             chunks: ['home']
         }),
         new CleanWebpackPlugin(['dist']),
