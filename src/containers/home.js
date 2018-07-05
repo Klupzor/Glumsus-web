@@ -1,15 +1,41 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import HomeLayout from './../components/containers-layout/home/home-layout.jsx';
+import Signup from './../components/signup/signup.jsx';
+import { setSignup, setDataUser } from './../actions/index';
 
 
-class Home extends Component {
+function Home (props){
 
-    render(){
         return(
-            <div> Hola mundo</div>
+            <HomeLayout>
+                <Signup handleSubmit={props.handleSignup} handleUser={props.dataUser}/>
+            </HomeLayout>
         )
-    }
+    
 }
 
 
-export default connect() (Home)
+
+function mapStateToProps(state, props){
+    return{
+        filter: state.visibilityFilter
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+    //     handleSignup: (event) => {
+    //         event.preventDefault()
+    //         // dispatch(setSignup(event))
+    //         console.log(event.target)
+    //   },
+      dataUser: (event)=> {
+        console.log(event.target.value)
+        dispatch(setDataUser(event.target.value))
+
+      }
+    }
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps) (Home)
