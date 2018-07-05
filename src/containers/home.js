@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import HomeLayout from './../components/containers-layout/home/home-layout.jsx';
 import Signup from './../components/signup/signup.jsx';
-import { setSignup, setDataUser, setDataEmail } from './../actions/index';
+import { setSignup, setDataUser, setDataEmail, setDataPanel } from './../actions/index';
 
 
 function Home (props){
@@ -41,8 +41,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
       },
       dataEmail: (event)=>{
-        console.log(event.target.value)
         dispatch(setDataEmail(event.target.value))
+      },
+      dataPanel: (event)=>{
+        console.log(event.target.value)
+        dispatch(setDataPanel(event.target.value))
       }
     }
   }

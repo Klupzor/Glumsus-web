@@ -13,6 +13,12 @@ const data = (state=[], action)=>{
                 ...state,
                 emailPerson: action.emailPerson
             }
+        
+        case type.SELECTING_PANEL:
+            return {
+                ...state,
+                panel: action.panel
+            }
     
         default:
             return state

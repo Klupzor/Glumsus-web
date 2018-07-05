@@ -14,3 +14,8 @@ export const setDataEmail = emailPerson => ({
     type: type.TYPING_EMAIL,
     emailPerson
 })
+
+export const setDataPanel = panel => ({
+    type: type.SELECTING_PANEL,
+    panel
+})
