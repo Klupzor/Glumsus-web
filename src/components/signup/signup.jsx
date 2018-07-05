@@ -8,16 +8,18 @@ function Signup(props){
                     <input type="text" onChange={props.handleUser}/>
                 </label>
                 <label >Email
-                    <input type="email"/>
+                    <input type="email" onChange={props.handleEmail} />
                 </label>
                 <label >
-                    Seleccione panel
-                    <select>
+                    Seleccione un panel
+                    <select onChange={props.handlePanel} >
+                        <option value="">.....</option>
                         <option value="Sogamoso">Sogamoso</option>
+
                     </select>
                 </label>
                 <label >Contraseña
-                    <input type="password"/>
+                    <input type="password" onChange={props.handlePass} />
                 </label>
                 <input type="submit" value="Registrar"/>
             </form>

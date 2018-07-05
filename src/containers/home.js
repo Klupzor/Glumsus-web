@@ -2,14 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import HomeLayout from './../components/containers-layout/home/home-layout.jsx';
 import Signup from './../components/signup/signup.jsx';
-import { setSignup, setDataUser } from './../actions/index';
+import { setSignup, setDataUser, setDataEmail } from './../actions/index';
 
 
 function Home (props){
 
         return(
             <HomeLayout>
-                <Signup handleSubmit={props.handleSignup} handleUser={props.dataUser}/>
+                <Signup 
+                handleSubmit={props.handleSignup} 
+                handleUser={props.dataUser}
+                handleEmail={props.dataEmail}
+                handlePanel={props.dataPanel}
+                handlePass={props.dataPass}
+                />
             </HomeLayout>
         )
     
@@ -31,9 +37,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     //         console.log(event.target)
     //   },
       dataUser: (event)=> {
-        console.log(event.target.value)
         dispatch(setDataUser(event.target.value))
 
+      },
+      dataEmail: (event)=>{
+        console.log(event.target.value)
+        dispatch(setDataEmail(event.target.value))
       }
     }
   }

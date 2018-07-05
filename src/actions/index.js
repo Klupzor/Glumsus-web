@@ -9,3 +9,8 @@ export const setDataUser = user => ({
     type: type.TYPING_USER,
     user
 })
+
+export const setDataEmail = emailPerson => ({
+    type: type.TYPING_EMAIL,
+    emailPerson
+})

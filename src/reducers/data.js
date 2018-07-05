@@ -7,6 +7,12 @@ const data = (state=[], action)=>{
                 ...state,
                 user: action.user
             }
+        
+        case type.TYPING_EMAIL:
+            return {
+                ...state,
+                emailPerson: action.emailPerson
+            }
     
         default:
             return state
