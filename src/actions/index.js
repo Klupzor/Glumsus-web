@@ -19,3 +19,8 @@ export const setDataPanel = panel => ({
     type: type.SELECTING_PANEL,
     panel
 })
+
+export const setDataPass = password => ({
+    type: type.TYPING_PASSWORD,
+    password
+})

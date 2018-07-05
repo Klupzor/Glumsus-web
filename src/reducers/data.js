@@ -19,7 +19,12 @@ const data = (state=[], action)=>{
                 ...state,
                 panel: action.panel
             }
-    
+        
+        case type.TYPING_PASSWORD:
+            return {
+                ...state,
+                password: action.password
+            }
         default:
             return state
     }
