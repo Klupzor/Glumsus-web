@@ -3,9 +3,12 @@ import thunk from 'redux-thunk'
 import rootReducer from './../reducers';
 
 const initialState = {
-    // data: {
-    //     paneles: data.paneles[0]
-    // },
+    data: {
+        user: "",
+        emailPerson: "",
+        panel: "",
+        password: ""
+    }
     // paneles: {
     //     loading: true
     // }    

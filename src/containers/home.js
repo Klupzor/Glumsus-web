@@ -1,44 +1,59 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import HomeLayout from './../components/containers-layout/home/home-layout.jsx';
 import Signup from './../components/signup/signup.jsx';
 import { setSignup, setDataUser, setDataEmail, setDataPanel, setDataPass } from './../actions/index';
 
 
-function Home (props){
+class Home extends Component{
+  constructor(props){
+    super(props)
+    
+    this.handleSignup = this.handleSignup.bind(this)
+    // this.dataUser = this.dataUser.bind(this)
 
-        return(
-            <HomeLayout>
-                <Signup 
-                handleSubmit={props.handleSignup} 
-                handleUser={props.dataUser}
-                handleEmail={props.dataEmail}
-                handlePanel={props.dataPanel}
-                handlePass={props.dataPass}
-                />
-            </HomeLayout>
-        )
+  }
+
+  
+  handleSignup(event) {
+    event.preventDefault()
+    // console.log(this.props)
+    this.props.dispatch(setSignup(this.props.data))
+    
+  }
+  render(){
+
+    return(
+        <HomeLayout>
+            <Signup 
+            handleSubmit={this.handleSignup} 
+            handleUser={this.props.dataUser}
+            handleEmail={this.props.dataEmail}
+            handlePanel={this.props.dataPanel}
+            handlePass={this.props.dataPass}
+            />
+        </HomeLayout>
+    )
+  }
+
     
 }
 
 
 
-function mapStateToProps(state, props){
+function mapStateToProps(state, ownProps){
     return{
-        filter: state.visibilityFilter
+        filter: state.visibilityFilter,
+        data: state.data
+        
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-    //     handleSignup: (event) => {
-    //         event.preventDefault()
-    //         // dispatch(setSignup(event))
-    //         console.log(event.target)
-    //   },
+        
       dataUser: (event)=> {
         dispatch(setDataUser(event.target.value))
-
       },
       dataEmail: (event)=>{
         dispatch(setDataEmail(event.target.value))
@@ -47,10 +62,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         dispatch(setDataPanel(event.target.value))
       },
       dataPass: (event)=>{
-        console.log(event.target.value)
         dispatch(setDataPass(event.target.value))
       }
     }
   }
 
-export default connect(mapStateToProps, mapDispatchToProps) (Home)
+export default connect(mapStateToProps) (Home)
