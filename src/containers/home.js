@@ -10,10 +10,13 @@ class Home extends Component{
     super(props)
     
     this.handleSignup = this.handleSignup.bind(this)
-    // this.dataUser = this.dataUser.bind(this)
+    this.dataUser = this.dataUser.bind(this)
+    this.dataEmail = this.dataEmail.bind(this)
+    this.dataPanel = this.dataPanel.bind(this)
+    this.dataPass = this.dataPass.bind(this)
+
 
   }
-
   
   handleSignup(event) {
     event.preventDefault()
@@ -21,25 +24,38 @@ class Home extends Component{
     this.props.dispatch(setSignup(this.props.data))
     
   }
+
+  dataUser(event) {
+    this.props.dispatch(setDataUser(event.target.value))
+  }
+
+  dataEmail(event){
+    this.props.dispatch(setDataEmail(event.target.value))
+  }
+
+  dataPanel(event){
+    this.props.dispatch(setDataPanel(event.target.value))
+  }
+
+  dataPass(event){
+    this.props.dispatch(setDataPass(event.target.value))
+  }
   render(){
 
     return(
         <HomeLayout>
             <Signup 
             handleSubmit={this.handleSignup} 
-            handleUser={this.props.dataUser}
-            handleEmail={this.props.dataEmail}
-            handlePanel={this.props.dataPanel}
-            handlePass={this.props.dataPass}
+            handleUser={this.dataUser}
+            handleEmail={this.dataEmail}
+            handlePanel={this.dataPanel}
+            handlePass={this.dataPass}
             />
         </HomeLayout>
     )
   }
-
     
 }
-
-
 
 function mapStateToProps(state, ownProps){
     return{
@@ -48,23 +64,5 @@ function mapStateToProps(state, ownProps){
         
     }
 }
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        
-      dataUser: (event)=> {
-        dispatch(setDataUser(event.target.value))
-      },
-      dataEmail: (event)=>{
-        dispatch(setDataEmail(event.target.value))
-      },
-      dataPanel: (event)=>{
-        dispatch(setDataPanel(event.target.value))
-      },
-      dataPass: (event)=>{
-        dispatch(setDataPass(event.target.value))
-      }
-    }
-  }
 
 export default connect(mapStateToProps) (Home)
