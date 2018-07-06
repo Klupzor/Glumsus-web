@@ -34,6 +34,15 @@ const data = (state=[], action)=>{
                 status: action.status,
                 statusText: action.statusText
             }
+
+        case type.ERASING_DATA:
+            return {
+                ...state,
+                user: "",
+                emailPerson: "",
+                panel: "",
+                password: ""
+            }
         default:
             return state
     }

@@ -12,6 +12,9 @@ export const setSignup = data => {
         .then(function (response) {
             // console.log(response);
             if (response.data.succes) {
+                dispatch({
+                    type: type.ERASING_DATA
+                })
                 console.log('Registró!!')
             }
             dispatch({
@@ -29,6 +32,8 @@ export const setSignup = data => {
 
     
 }
+
+
 
 export const setDataUser = user => ({
     type: type.TYPING_USER,
