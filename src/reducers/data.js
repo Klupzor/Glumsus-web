@@ -25,6 +25,15 @@ const data = (state=[], action)=>{
                 ...state,
                 password: action.password
             }
+
+        case type.SET_SIGNUP:
+            return {
+                ...state,
+                succes: action.succes,
+                message: action.message,
+                status: action.status,
+                statusText: action.statusText
+            }
         default:
             return state
     }
