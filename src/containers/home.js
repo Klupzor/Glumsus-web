@@ -45,6 +45,7 @@ class Home extends Component{
     return(
         <HomeLayout>
             <Signup 
+            datos={this.props.data}
             handleSubmit={this.handleSignup} 
             handleUser={this.dataUser}
             handleEmail={this.dataEmail}
