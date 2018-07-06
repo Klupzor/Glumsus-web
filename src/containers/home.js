@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import HomeLayout from './../components/containers-layout/home/home-layout.jsx';
 import Signup from './../components/signup/signup.jsx';
 import { setSignup, setDataUser, setDataEmail, setDataPanel, setDataPass } from './../actions/index';
+import Login from '../components/login/login.jsx';
 
 
 class Home extends Component{
@@ -52,6 +53,7 @@ class Home extends Component{
             handlePanel={this.dataPanel}
             handlePass={this.dataPass}
             />
+            <Login/>
         </HomeLayout>
     )
   }

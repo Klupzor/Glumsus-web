@@ -4,4 +4,6 @@ export const TYPING_EMAIL = 'TYPING_EMAIL'
 export const SELECTING_PANEL = 'SELECTING_PANEL'
 export const TYPING_PASSWORD = 'TYPING_PASSWORD'
 export const ERASING_DATA = 'ERASING_DATA'
+export const SET_LOGIN = 'SET_LOGIN'
+
 

@@ -29,8 +29,6 @@ export const setSignup = data => {
             console.log(error);
           });
     }
-
-    
 }
 
 
@@ -54,3 +52,33 @@ export const setDataPass = password => ({
     type: type.TYPING_PASSWORD,
     password
 })
+
+// ------------LOGIN -----------
+
+export const setLogin = data =>{
+    return dispatch => {
+        return Axios.post('http://localhost:3000/login/',{
+            user: data.user,
+            password: data.password,
+        })
+        .then(function (response) {
+            // console.log(response);
+            if (response.data.succes) {
+                // dispatch({
+                //     type: type.ERASING_DATA
+                // })
+                console.log('Entró!!')
+            }
+            dispatch({
+                type: type.SET_LOGIN,
+                succes: response.data.succes,
+                message: response.data.message,
+                status: response.status,
+                statusText: response.statusText
+              })
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    }
+}

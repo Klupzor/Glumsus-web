@@ -8,10 +8,12 @@ const initialState = {
         emailPerson: "",
         panel: "",
         password: ""
+    },
+    userData: {
+        user: "",
+        password: ""
     }
-    // paneles: {
-    //     loading: true
-    // }    
+       
 }
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ;
