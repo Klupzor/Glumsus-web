@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import HomeLayout from './../components/containers-layout/home/home-layout.jsx';
 import Signup from './../components/signup/signup.jsx';
-import { setSignup, setDataUser, setDataEmail, setDataPanel, setDataPass, setDataLogin } from './../actions/index';
+import { setSignup, setDataUser, setDataEmail, setDataPanel, setDataPass, setDataLogin, setLogin } from './../actions/index';
 import Login from '../components/login/login.jsx';
 
 
@@ -16,6 +16,7 @@ class Home extends Component{
     this.dataPanel = this.dataPanel.bind(this)
     this.dataPass = this.dataPass.bind(this)
     this.login = this.login.bind(this)
+    this.handleSetLogin = this.handleSetLogin.bind(this)
 
   }
   
@@ -45,9 +46,12 @@ class Home extends Component{
   //  ..................login .......................
 
   login(event){
-    console.log(event.target.name)
-    console.log(event.target.value)
     this.props.dispatch(setDataLogin(event.target.name, event.target.value))
+  }
+
+  handleSetLogin(event){
+    event.preventDefault()
+    this.props.dispatch(setLogin(this.props.userData))
 
   }
 
@@ -65,6 +69,7 @@ class Home extends Component{
             />
             <Login
             handleLogin={this.login}
+            handleSubmit={this.handleSetLogin} 
             />
         </HomeLayout>
     )
@@ -75,7 +80,8 @@ class Home extends Component{
 function mapStateToProps(state, ownProps){
     return{
         filter: state.visibilityFilter,
-        data: state.data
+        data: state.data,
+        userData: state.userData
         
     }
 }

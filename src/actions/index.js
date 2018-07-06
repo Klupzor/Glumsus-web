@@ -60,7 +60,7 @@ export const setLogin = data =>{
     return dispatch => {
         return Axios.post('http://localhost:3000/login/',{
             user: data.user,
-            password: data.password,
+            password: data.password
         })
         .then(function (response) {
             // console.log(response);
@@ -68,7 +68,7 @@ export const setLogin = data =>{
                 // dispatch({
                 //     type: type.ERASING_DATA
                 // })
-                console.log('Entró!!')
+                console.log('Bienvenido!!')
             }
             dispatch({
                 type: type.SET_LOGIN,
