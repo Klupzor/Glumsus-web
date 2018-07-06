@@ -1,6 +1,7 @@
 import * as type from './actionType'
 import Axios from '../../node_modules/axios';
 
+// -------------sign in------------------
 export const setSignup = data => {
     return dispatch => {
         return Axios.post('http://localhost:3000/signup/',{
@@ -82,3 +83,9 @@ export const setLogin = data =>{
           });
     }
 }
+
+export const setDataLogin = (name, value)=>({
+    type: type.TYPING_LOGIN,
+    name,
+    value
+})

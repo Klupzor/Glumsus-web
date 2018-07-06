@@ -10,6 +10,21 @@ const userData = (state=[], action)=>{
             status: action.status,
             statusText: action.statusText
             }
+
+        case type.TYPING_LOGIN:
+            if (action.name === 'user') {
+                return {
+                    ...state,
+                    user: action.value
+                    }
+            }
+            if (action.name === 'password') {
+                return {
+                    ...state,
+                    password: action.value
+                    }
+            }
+            
         default:
             return state
     }

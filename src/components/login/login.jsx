@@ -4,12 +4,12 @@ function Login(props){
 return(
     <div>
         LOGIN
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={props.handleSubmit} onChange={props.handleLogin}>
                 <label >Usuario
-                    <input type="text"   onChange={props.handleUser}/>
+                    <input type="text"  name="user" />
                 </label>
                 <label >Contraseña
-                    <input type="password"  name="password" onChange={props.handlePass} />
+                    <input type="password"  name="password"  />
                 </label>
                 <input type="submit" value="Entrar"/>
             </form>
