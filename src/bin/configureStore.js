@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk'
 import rootReducer from './../reducers';
+import { VisibilityFilters } from './../actions/actionType';
 
 const initialState = {
     data: {
@@ -12,6 +13,9 @@ const initialState = {
     userData: {
         user: "",
         password: ""
+    },
+    visibilityFilter: {
+        filter: VisibilityFilters.SHOW_HOME
     }
        
 }
