@@ -24,6 +24,13 @@ const userData = (state=[], action)=>{
                     password: action.value
                     }
             }
+
+        case type.ERASING_USER_DATA:
+            return {
+            ...state,
+            user: "",
+            password: ""
+            }
             
         default:
             return state

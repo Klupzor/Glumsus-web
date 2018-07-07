@@ -6,5 +6,6 @@ export const TYPING_PASSWORD = 'TYPING_PASSWORD'
 export const ERASING_DATA = 'ERASING_DATA'
 export const SET_LOGIN = 'SET_LOGIN'
 export const TYPING_LOGIN = 'TYPING_LOGIN'
+export const ERASING_USER_DATA = 'ERASING_USER_DATA'
 
 

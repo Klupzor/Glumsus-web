@@ -65,9 +65,9 @@ export const setLogin = data =>{
         .then(function (response) {
             // console.log(response);
             if (response.data.succes) {
-                // dispatch({
-                //     type: type.ERASING_DATA
-                // })
+                dispatch({
+                    type: type.ERASING_USER_DATA
+                })
                 console.log('Bienvenido!!')
             }
             dispatch({

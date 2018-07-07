@@ -69,7 +69,8 @@ class Home extends Component{
             />
             <Login
             handleLogin={this.login}
-            handleSubmit={this.handleSetLogin} 
+            handleSubmit={this.handleSetLogin}
+            datos={this.props.userData} 
             />
         </HomeLayout>
     )
