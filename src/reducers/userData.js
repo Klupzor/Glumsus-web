@@ -35,6 +35,12 @@ const userData = (state=[], action)=>{
             user: action.user,
             panel: action.panel
             }
+
+        case type.LOAD_PERSON_DATA:
+            return {
+            ...state,
+            emailPerson: action.emailPerson
+            }
             
         default:
             return state

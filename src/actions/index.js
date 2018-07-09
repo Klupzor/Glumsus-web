@@ -106,7 +106,7 @@ export const loadBusinessData = token =>{
             headers: {'x-access-token': token}
         })
         .then(function (response) {
-            console.log(response.data);
+            // console.log(response.data);
             if (response.data.success) {
                 dispatch({
                     type: type.LOAD_BUSINESS_DATA,
@@ -127,7 +127,32 @@ export const loadBusinessData = token =>{
             console.log(error);
         });
     }
-    
 }
 
 
+export const loadPersonData = token =>{
+    return dispatch =>{
+        return axios.get('http://localhost:3000/user/person',{
+            headers: {'x-access-token': token}
+        })
+        .then(function (response) {
+            if (response.data.success) {
+                dispatch({
+                    type: type.LOAD_PERSON_DATA,
+                    emailPerson: response.data.person.emailPerson,
+                })
+                
+            }
+            dispatch({
+                type: type.GET_DATA_SERVER,
+                success: response.data.success,
+                message: response.data.message,
+                status: response.status,
+                statusText: response.statusText,
+                    })
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
+}
