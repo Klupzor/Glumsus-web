@@ -8,7 +8,8 @@ const userData = (state=[], action)=>{
             succes: action.succes,
             message: action.message,
             status: action.status,
-            statusText: action.statusText
+            statusText: action.statusText,
+            token: action.token
             }
 
         case type.TYPING_LOGIN:

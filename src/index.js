@@ -13,8 +13,7 @@ const reactRoot = document.getElementById('root')
 
 ReactDom.render(
     <Provider store={store}>
-        {/* <App/> */}
-        <Business/>
+        <App/>
     </Provider>,
 reactRoot
 )

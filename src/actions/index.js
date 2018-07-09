@@ -75,7 +75,8 @@ export const setLogin = data =>{
                 succes: response.data.succes,
                 message: response.data.message,
                 status: response.status,
-                statusText: response.statusText
+                statusText: response.statusText,
+                token: response.data.token
               })
           })
           .catch(function (error) {
