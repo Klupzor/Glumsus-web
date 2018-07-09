@@ -8,6 +8,8 @@ export const SET_LOGIN = 'SET_LOGIN'
 export const TYPING_LOGIN = 'TYPING_LOGIN'
 export const ERASING_USER_DATA = 'ERASING_USER_DATA'
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
+export const LOAD_USER_DATA = 'LOAD_USER_DATA'
+
 
 
 export const VisibilityFilters = {

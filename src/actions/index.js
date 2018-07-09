@@ -1,6 +1,5 @@
 import * as type from './actionType'
 import Axios from '../../node_modules/axios';
-
 // -------------sign in------------------
 export const setSignup = data => {
     return dispatch => {
@@ -68,6 +67,10 @@ export const setLogin = data =>{
                 dispatch({
                     type: type.ERASING_USER_DATA
                 })
+                dispatch({
+                    type: type.SET_VISIBILITY_FILTER,
+                    filter: type.VisibilityFilters.SHOW_BUSSINESS_PAGE
+                  })
                 console.log('Bienvenido!!')
             }
             dispatch({
@@ -77,10 +80,6 @@ export const setLogin = data =>{
                 status: response.status,
                 statusText: response.statusText,
                 token: response.data.token
-              })
-              dispatch({
-                type: type.SET_VISIBILITY_FILTER,
-                filter: type.VisibilityFilters.SHOW_BUSSINESS_PAGE
               })
 
           })
@@ -95,3 +94,20 @@ export const setDataLogin = (name, value)=>({
     name,
     value
 })
+
+//-----------------LOAD DATA--------
+export const loadData = (token)=>{
+    
+        return Axios.get('http://localhost:3000/user/business',{
+            // headers: {'x-access-token': 'eyJhbGciOiJIUzI1NiJ9.Z2x1bXN1cw.FTJ7lS9QyrUT7alfi-tREMgsz6_X4NakgLWinMxNaD4'}
+            headers: {'x-access-token': token}
+        })
+        .then(function (response) {
+            console.log(response.data);
+           
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    
+}
