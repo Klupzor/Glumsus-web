@@ -63,7 +63,7 @@ export const setLogin = data =>{
         })
         .then(function (response) {
             // console.log(response);
-            if (response.data.succes) {
+            if (response.data.success) {
                 dispatch({
                     type: type.ERASING_USER_DATA
                 })
@@ -75,11 +75,14 @@ export const setLogin = data =>{
             }
             dispatch({
                 type: type.SET_LOGIN,
-                succes: response.data.succes,
+                token: response.data.token
+              })
+              dispatch({
+                type: type.GET_DATA_SERVER,
+                success: response.data.success,
                 message: response.data.message,
                 status: response.status,
                 statusText: response.statusText,
-                token: response.data.token
               })
 
           })
@@ -112,6 +115,13 @@ export const loadBusinessData = token =>{
                 })
                 
             }
+            dispatch({
+                type: type.GET_DATA_SERVER,
+                success: response.data.success,
+                message: response.data.message,
+                status: response.status,
+                statusText: response.statusText,
+                    })
         })
         .catch(function (error) {
             console.log(error);

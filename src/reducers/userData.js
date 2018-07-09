@@ -5,10 +5,6 @@ const userData = (state=[], action)=>{
         case type.SET_LOGIN:
             return {
             ...state,
-            succes: action.succes,
-            message: action.message,
-            status: action.status,
-            statusText: action.statusText,
             token: action.token
             }
 
