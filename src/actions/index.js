@@ -78,6 +78,11 @@ export const setLogin = data =>{
                 statusText: response.statusText,
                 token: response.data.token
               })
+              dispatch({
+                type: type.SET_VISIBILITY_FILTER,
+                filter: type.VisibilityFilters.SHOW_BUSSINESS_PAGE
+              })
+
           })
           .catch(function (error) {
             console.log(error);

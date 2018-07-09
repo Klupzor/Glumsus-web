@@ -27,7 +27,7 @@ class App extends Component{
 
 function mapStateToProps(state){
     return{
-        filter: state.visibilityFilter.filter
+        filter: state.visibilityFilter
     }
 }
 
