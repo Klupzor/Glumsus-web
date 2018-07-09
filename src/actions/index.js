@@ -1,9 +1,9 @@
 import * as type from './actionType'
-import Axios from '../../node_modules/axios';
+import axios from 'axios';
 // -------------sign in------------------
 export const setSignup = data => {
     return dispatch => {
-        return Axios.post('http://localhost:3000/signup/',{
+        return axios.post('http://localhost:3000/signup/',{
             user: data.user,
             emailPerson: data.emailPerson,
             password: data.password,
@@ -57,7 +57,7 @@ export const setDataPass = password => ({
 
 export const setLogin = data =>{
     return dispatch => {
-        return Axios.post('http://localhost:3000/login/',{
+        return axios.post('http://localhost:3000/login/',{
             user: data.user,
             password: data.password
         })
@@ -89,25 +89,35 @@ export const setLogin = data =>{
     }
 }
 
-export const setDataLogin = (name, value)=>({
-    type: type.TYPING_LOGIN,
+export const setDataLogin = (name, value)=>{
+   return {type: type.TYPING_LOGIN,
     name,
-    value
-})
+    value}
+}
 
 //-----------------LOAD DATA--------
-export const loadData = (token)=>{
-    
-        return Axios.get('http://localhost:3000/user/business',{
+export const loadBusinessData = token =>{
+    return dispatch =>{
+        return axios.get('http://localhost:3000/user/business',{
             // headers: {'x-access-token': 'eyJhbGciOiJIUzI1NiJ9.Z2x1bXN1cw.FTJ7lS9QyrUT7alfi-tREMgsz6_X4NakgLWinMxNaD4'}
             headers: {'x-access-token': token}
         })
         .then(function (response) {
             console.log(response.data);
-           
-          })
-          .catch(function (error) {
+            if (response.data.success) {
+                dispatch({
+                    type: type.LOAD_BUSINESS_DATA,
+                    user: response.data.business.user,
+                    panel: response.data.business.panel
+                })
+                
+            }
+        })
+        .catch(function (error) {
             console.log(error);
-          });
+        });
+    }
     
 }
+
+

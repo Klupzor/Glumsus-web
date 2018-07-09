@@ -32,6 +32,13 @@ const userData = (state=[], action)=>{
             user: "",
             password: ""
             }
+
+        case type.LOAD_BUSINESS_DATA:
+            return {
+            ...state,
+            user: action.user,
+            panel: action.panel
+            }
             
         default:
             return state

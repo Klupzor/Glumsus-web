@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import BusinessLayout from './../components/containers-layout/business/business-layout.jsx';
-import { loadData } from '../actions';
+import { loadBusinessData } from '../actions';
 
 
 class Business extends Component{
@@ -13,8 +13,7 @@ class Business extends Component{
 
 render(){
     if (this.props.llave) {
-        loadData(this.props.llave)
-        
+        this.props.dispatch(loadBusinessData(this.props.llave))
     }
 
     return(
