@@ -19,6 +19,12 @@ const data = (state=[], action)=>{
                 ...state,
                 panel: action.panel
             }
+
+        case type.SELECTING_CELL:
+            return {
+                ...state,
+                cell: action.cell
+            }
         
         case type.TYPING_PASSWORD:
             return {
@@ -41,6 +47,7 @@ const data = (state=[], action)=>{
                 user: "",
                 emailPerson: "",
                 panel: "",
+                cell: "",
                 password: ""
             }
         default:

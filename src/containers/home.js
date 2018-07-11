@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import HomeLayout from './../components/containers-layout/home/home-layout.jsx';
 import Signup from './../components/signup/signup.jsx';
-import { setSignup, setDataUser, setDataEmail, setDataPanel, setDataPass, setDataLogin, setLogin } from './../actions/index';
+import { setSignup, setDataUser, setDataEmail, setDataPanel, setDataPass, setDataLogin, setLogin, setDataCell } from './../actions/index';
 import Login from '../components/login/login.jsx';
 
 
@@ -14,6 +14,7 @@ class Home extends Component{
     this.dataUser = this.dataUser.bind(this)
     this.dataEmail = this.dataEmail.bind(this)
     this.dataPanel = this.dataPanel.bind(this)
+    this.dataCell = this.dataCell.bind(this)
     this.dataPass = this.dataPass.bind(this)
     this.login = this.login.bind(this)
     this.handleSetLogin = this.handleSetLogin.bind(this)
@@ -37,6 +38,10 @@ class Home extends Component{
 
   dataPanel(event){
     this.props.dispatch(setDataPanel(event.target.value))
+  }
+
+  dataCell(event){
+    this.props.dispatch(setDataCell(event.target.value))
   }
 
   dataPass(event){
@@ -65,6 +70,7 @@ class Home extends Component{
             handleUser={this.dataUser}
             handleEmail={this.dataEmail}
             handlePanel={this.dataPanel}
+            handleCell={this.dataCell}
             handlePass={this.dataPass}
             />
             <Login

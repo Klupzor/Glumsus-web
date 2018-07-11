@@ -8,6 +8,7 @@ const initialState = {
         user: "",
         emailPerson: "",
         panel: "",
+        cell: "",
         password: ""
     },
     userData: {

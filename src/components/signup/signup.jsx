@@ -18,6 +18,15 @@ function Signup(props){
 
                     </select>
                 </label>
+                <label >
+                    Seleccione un tipo de negocio
+                    <select onChange={props.handleCell} name="cell" value={props.datos.cell} >
+                        <option value="">.....</option>
+                        <option value="Restaurante">Restaurante</option>
+                        <option value="Discoteca">Discoteca</option>
+                        <option value="Bar">Bar</option>
+                    </select>
+                </label>
                 <label >Contraseña
                     <input type="password" value={props.datos.password} name="password" onChange={props.handlePass} />
                 </label>

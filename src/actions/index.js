@@ -7,7 +7,8 @@ export const setSignup = data => {
             user: data.user,
             emailPerson: data.emailPerson,
             password: data.password,
-            panel: data.panel
+            panel: data.panel,
+            cell: data.cell
         })
         .then(function (response) {
             // console.log(response);
@@ -46,6 +47,11 @@ export const setDataEmail = emailPerson => ({
 export const setDataPanel = panel => ({
     type: type.SELECTING_PANEL,
     panel
+})
+
+export const setDataCell = cell => ({
+    type: type.SELECTING_CELL,
+    cell
 })
 
 export const setDataPass = password => ({
@@ -111,7 +117,7 @@ export const loadBusinessData = token =>{
                 dispatch({
                     type: type.LOAD_BUSINESS_DATA,
                     user: response.data.business.user,
-                    panel: response.data.business.panel
+    cell: response.data.business.panel
                 })
                 
             }
