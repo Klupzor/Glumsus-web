@@ -9,6 +9,7 @@ export const SET_LOGIN = 'SET_LOGIN'
 export const TYPING_LOGIN = 'TYPING_LOGIN'
 export const ERASING_USER_DATA = 'ERASING_USER_DATA'
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
+export const SET_NAVIGATION_FILTER = 'SET_NAVIGATION_FILTER'
 export const LOAD_PERSON_DATA = 'LOAD_PERSON_DATA'
 export const LOAD_BUSINESS_DATA = 'LOAD_BUSINESS_DATA'
 export const GET_DATA_SERVER = 'GET_DATA_SERVER'
@@ -21,5 +22,12 @@ export const VisibilityFilters = {
     
   }
 
+  export const NavigationFilters = {
+    SHOW_CARTA: 'SHOW_CARTA',
+    SHOW_ABOUT_US: 'SHOW_ABOUT_US',
+    SHOW_CONTACT_US: 'SHOW_CONTACT_US',
+    SHOW_PROFILE: 'SHOW_PROFILE'
+    
+  }
 
 

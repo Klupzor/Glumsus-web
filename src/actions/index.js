@@ -162,3 +162,9 @@ export const loadPersonData = token =>{
         });
     }
 }
+
+//---------------------------Filtro de navegacion----------------------
+export const setNavigationFilter = (filter)=>({
+    type: type.SET_NAVIGATION_FILTER,
+    filter
+})
