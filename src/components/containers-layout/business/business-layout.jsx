@@ -1,10 +1,10 @@
 import React from 'react';
-
+import './business.scss'
 
 function BusinessLayout(props) {
         
         return (
-            <div className="main">
+            <div className="business">
                 {props.children}
             </div>
         )

@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import BusinessLayout from './../components/containers-layout/business/business-layout.jsx';
 import { loadBusinessData, loadPersonData } from '../actions';
+import Content from '../components/content/content.jsx'
+import Menu from '../components/menu/menu.jsx'
 
 
 class Business extends Component{
@@ -20,7 +22,8 @@ render(){
 
     return(
         <BusinessLayout>
-            <div> hola bb </div>
+            <Menu/>
+            <Content/>
         </BusinessLayout>
     )
   }
