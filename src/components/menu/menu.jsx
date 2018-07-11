@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavigationFilters } from '../../actions/actionType';
+import './menu.scss'
 
 function Menu (props){
 

@@ -1,0 +1,15 @@
+@import '../../bin/variables';
+
+
+
+.item-pallet{
+    display: grid;
+    grid-row-gap: 20px;
+    span {
+        cursor: pointer;
+    }
+    
+    @if $border {
+        border: 1px solid red;
+    }
+}
