@@ -13,7 +13,9 @@ const initialState = {
     },
     userData: {
         user: "",
-        password: ""
+        password: "",
+        loginBusiness: false,
+        loginPerson: false
     },
     visibilityFilter: {
         filter: VisibilityFilters.SHOW_HOME

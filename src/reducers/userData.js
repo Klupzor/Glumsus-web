@@ -34,13 +34,15 @@ const userData = (state=[], action)=>{
             ...state,
             user: action.user,
             panel: action.panel,
-            businessName: action.name
+            businessName: action.name,
+            loginBusiness: true
             }
 
         case type.LOAD_PERSON_DATA:
             return {
             ...state,
-            emailPerson: action.emailPerson
+            emailPerson: action.emailPerson,
+            loginPerson: true
             }
             
         default:

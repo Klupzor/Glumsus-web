@@ -18,28 +18,40 @@ handleClickMenu(event){
 }
 render(){
     if (this.props.llave) {
-        this.props.dispatch(loadBusinessData(this.props.llave))
-        this.props.dispatch(loadPersonData(this.props.llave))
-
+        if (!this.props.loginBusiness) {
+            this.props.dispatch(loadBusinessData(this.props.llave))
+            console.log('pidiendo datos negocio')
+        }else
+            if (!this.props.loginPerson) {
+                this.props.dispatch(loadPersonData(this.props.llave))
+                console.log('pidiendo datos persona')
+            }
+        
+        return(
+            <BusinessLayout>
+                <Menu
+                    handleClick={this.handleClickMenu}
+                />
+                <Content name={this.props.businessName} filter={this.props.filter} />
+            </BusinessLayout>
+        )
+    }else{
+        return(
+            <div>Cargando...</div>
+        )
     }
 
-    return(
-        <BusinessLayout>
-            <Menu
-                handleClick={this.handleClickMenu}
-            />
-            <Content name={this.props.businessName} filter={this.props.filter} />
-        </BusinessLayout>
-    )
   }
     
 }
 
-function mapStateToProps(state, ownProps){
+function mapStateToProps(state){
     return{
      llave: state.userData.token,
      businessName: state.userData.businessName,
-     filter: state.navigationFilter
+     filter: state.navigationFilter,
+     loginBusiness: state.userData.loginBusiness,
+     loginPerson: state.userData.loadPersonData
         
     }
 }
