@@ -33,7 +33,8 @@ const userData = (state=[], action)=>{
             return {
             ...state,
             user: action.user,
-            panel: action.panel
+            panel: action.panel,
+            businessName: action.name
             }
 
         case type.LOAD_PERSON_DATA:

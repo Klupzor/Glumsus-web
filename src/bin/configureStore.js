@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk'
 import rootReducer from './../reducers';
-import { VisibilityFilters } from './../actions/actionType';
+import { VisibilityFilters, NavigationFilters } from './../actions/actionType';
 
 const initialState = {
     data: {
@@ -17,6 +17,9 @@ const initialState = {
     },
     visibilityFilter: {
         filter: VisibilityFilters.SHOW_HOME
+    },
+    navigationFilter: {
+        filter: NavigationFilters.SHOW_HOME_CONTENT
     }
        
 }

@@ -23,6 +23,7 @@ export const VisibilityFilters = {
   }
 
   export const NavigationFilters = {
+    SHOW_HOME_CONTENT: 'SHOW_HOME_CONTENT',
     SHOW_CARTA: 'SHOW_CARTA',
     SHOW_ABOUT_US: 'SHOW_ABOUT_US',
     SHOW_CONTACT_US: 'SHOW_CONTACT_US',

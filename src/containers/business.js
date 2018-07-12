@@ -28,7 +28,7 @@ render(){
             <Menu
                 handleClick={this.handleClickMenu}
             />
-            <Content/>
+            <Content name={this.props.businessName} filter={this.props.filter} />
         </BusinessLayout>
     )
   }
@@ -38,6 +38,8 @@ render(){
 function mapStateToProps(state, ownProps){
     return{
      llave: state.userData.token,
+     businessName: state.userData.businessName,
+     filter: state.navigationFilter
         
     }
 }
