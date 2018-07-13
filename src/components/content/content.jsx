@@ -3,15 +3,19 @@ import './content.scss'
 import { NavigationFilters } from '../../actions/actionType';
 
 function Content (props){
-
+//-------------home----------------
     function homeContent(){
         return(
             <div className="content">
                 <div className="title" >{props.name}</div>
+                <img src="https://s3.amazonaws.com/glumsus-public/covers/restaurantes.jpg" alt="cover" 
+                width={400}
+                height={260}
+                />
             </div>
         )
     }
-//---------------------------------------
+//---------------------------------------la carta----------
     function cartaContent(){
         return(
             <div className="content">
@@ -19,7 +23,7 @@ function Content (props){
             </div>
         )
     }
-//-----------------------------------------------
+//-----------------------------------------------quienes somos---------
     function aboutUsContent(){
         return(
             <div className="content">
@@ -27,7 +31,7 @@ function Content (props){
             </div>
         )
     }
-//------------------------------------------------
+//------------------------------------------------contactenos---------
     function contactUsContent(){
         return(
             <div className="content">
@@ -35,7 +39,7 @@ function Content (props){
             </div>
         )
     }
-//--------------------------------------------------
+//--------------------------------------------------perfil--------------------
     function profileContent(){
         return(
             <div className="content">

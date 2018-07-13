@@ -34,7 +34,9 @@ const userData = (state=[], action)=>{
             ...state,
             user: action.user,
             panel: action.panel,
+            cell: action.cell,
             businessName: action.name,
+            menus: action.menus,
             loginBusiness: true
             }
 

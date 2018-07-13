@@ -117,8 +117,10 @@ export const loadBusinessData = token =>{
                 dispatch({
                     type: type.LOAD_BUSINESS_DATA,
                     user: response.data.business.user,
-                    cell: response.data.business.panel,
-                    name: response.data.business.name
+                    panel: response.data.business.panel,
+                    cell: response.data.business.cell,
+                    name: response.data.business.name,
+                    menus: response.data.business.menus
                 })
                 
             }

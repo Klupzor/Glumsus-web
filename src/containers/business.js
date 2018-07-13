@@ -51,7 +51,7 @@ function mapStateToProps(state){
      businessName: state.userData.businessName,
      filter: state.navigationFilter,
      loginBusiness: state.userData.loginBusiness,
-     loginPerson: state.userData.loadPersonData
+     loginPerson: state.userData.loginPerson
         
     }
 }
