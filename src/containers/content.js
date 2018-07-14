@@ -1,57 +1,62 @@
-import React from 'react'
-import { NavigationFilters } from '../actions/actionType';
+import React, {Component} from 'react'
+import { connect } from 'react-redux';
 
-function Content (props){
-//-------------home----------------
-    function homeContent(){
-        return(
-            <div className="content">
-                <div className="title" >{props.name}</div>
-                <img src="https://s3.amazonaws.com/glumsus-public/covers/restaurantes.jpg" alt="cover" 
-                width={400}
-                height={260}
-                />
-            </div>
-        )
-    }
-//---------------------------------------la carta----------
-    function cartaContent(){
-        return(
-            <div className="content">
-                <div className="carta" >
+import { NavigationFilters } from '../actions/actionType';
+import HomeContent from '../components/home-content/homeContent.jsx';
+
+class Content extends Component {
+// //-------------home----------------
+//     function homeContent(){
+//         return(
+//             <div className="content">
+//                 <div className="title" >{props.name}</div>
+//                 <img src="https://s3.amazonaws.com/glumsus-public/covers/restaurantes.jpg" alt="cover" 
+//                 width={400}
+//                 height={260}
+//                 />
+//             </div>
+//         )
+//     }
+// //---------------------------------------la carta----------
+//     function cartaContent(){
+//         return(
+//             <div className="content">
+//                 <div className="carta" >
                 
-                </div>
-            </div>
-        )
-    }
-//-----------------------------------------------quienes somos---------
-    function aboutUsContent(){
-        return(
-            <div className="content">
-                <div className="about-us" >Quienes somos</div>
-            </div>
-        )
-    }
-//------------------------------------------------contactenos---------
-    function contactUsContent(){
-        return(
-            <div className="content">
-                <div className="contact-us" >Cotactenos</div>
-            </div>
-        )
-    }
-//--------------------------------------------------perfil--------------------
-    function profileContent(){
-        return(
-            <div className="content">
-                <div className="profile" >Perfil</div>
-            </div>
-        )
-    }
+//                 </div>
+//             </div>
+//         )
+//     }
+// //-----------------------------------------------quienes somos---------
+//     function aboutUsContent(){
+//         return(
+//             <div className="content">
+//                 <div className="about-us" >Quienes somos</div>
+//             </div>
+//         )
+//     }
+// //------------------------------------------------contactenos---------
+//     function contactUsContent(){
+//         return(
+//             <div className="content">
+//                 <div className="contact-us" >Cotactenos</div>
+//             </div>
+//         )
+//     }
+// //--------------------------------------------------perfil--------------------
+//     function profileContent(){
+//         return(
+//             <div className="content">
+//                 <div className="profile" >Perfil</div>
+//             </div>
+//         )
+//     }
 //----------------------------------------------------
-    switch (props.filter) {
+
+render(){
+    switch (this.props.filter) {
         case NavigationFilters.SHOW_HOME_CONTENT:
-            return homeContent()
+            return <HomeContent name={this.props.businessName}/>
         
         case NavigationFilters.SHOW_CARTA:
             return cartaContent()
@@ -66,9 +71,22 @@ function Content (props){
             return profileContent()
     
         default:
-            return homeContent()
+            return <HomeContent name={this.props.businessName}/>
     }
+
+}
     
 }
 
-export default Content
+
+
+function mapStateToProps(state){
+    return{
+     businessName: state.userData.businessName,
+     filter: state.navigationFilter,
+     menuCategories: state.userData.menuCategories
+        
+    }
+}
+
+export default connect(mapStateToProps)(Content)
