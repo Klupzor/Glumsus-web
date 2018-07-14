@@ -120,7 +120,7 @@ export const loadBusinessData = token =>{
                     panel: response.data.business.panel,
                     cell: response.data.business.cell,
                     name: response.data.business.name,
-                    menus: response.data.business.menus
+                    menuCategories: response.data.business.menuCategories
                 })
                 
             }
