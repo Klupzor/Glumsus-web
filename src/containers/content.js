@@ -14,7 +14,7 @@ class Content extends Component {
                 return <HomeContent name={this.props.businessName}/>
             
             case NavigationFilters.SHOW_CARTA:
-                return <MenuContent/>
+                return <MenuContent menuCategories={this.props.menuCategories}/>
 
             case NavigationFilters.SHOW_ABOUT_US:
                 return <AboutContent/>
