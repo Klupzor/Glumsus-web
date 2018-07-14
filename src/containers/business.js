@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import BusinessLayout from './../components/containers-layout/business/business-layout.jsx';
 import { loadBusinessData, loadPersonData, setNavigationFilter } from '../actions';
-import Content from '../components/content/content.jsx'
 import Menu from '../components/menu/menu.jsx'
+import Content from './content';
 
 
 class Business extends Component{

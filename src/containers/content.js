@@ -1,6 +1,5 @@
 import React from 'react'
-import './content.scss'
-import { NavigationFilters } from '../../actions/actionType';
+import { NavigationFilters } from '../actions/actionType';
 
 function Content (props){
 //-------------home----------------
@@ -19,7 +18,9 @@ function Content (props){
     function cartaContent(){
         return(
             <div className="content">
-                <div className="carta" >Aqui va el Menu</div>
+                <div className="carta" >
+                
+                </div>
             </div>
         )
     }
