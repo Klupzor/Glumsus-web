@@ -14,7 +14,7 @@ class Content extends Component {
                 return <HomeContent name={this.props.businessName}/>
             
             case NavigationFilters.SHOW_CARTA:
-                return <MenuContent menuCategories={this.props.menuCategories}/>
+                return <MenuContent menuCategories={this.props.menuCategories} busId={this.props.busId} />
 
             case NavigationFilters.SHOW_ABOUT_US:
                 return <AboutContent/>
@@ -35,7 +35,8 @@ function mapStateToProps(state){
     return{
      businessName: state.userData.businessName,
      filter: state.navigationFilter,
-     menuCategories: state.userData.menuCategories
+     menuCategories: state.userData.menuCategories,
+     busId: state.userData.busId
         
     }
 }
