@@ -1,9 +1,10 @@
 import * as type from './actionType'
 import axios from 'axios';
+import Config from 'Config'
 // -------------sign in------------------
 export const setSignup = data => {
     return dispatch => {
-        return axios.post('http://localhost:3000/signup/',{
+        return axios.post(Config.serverUrl+'/signup/',{
             user: data.user,
             emailPerson: data.emailPerson,
             password: data.password,
@@ -63,7 +64,7 @@ export const setDataPass = password => ({
 
 export const setLogin = data =>{
     return dispatch => {
-        return axios.post('http://localhost:3000/login/',{
+        return axios.post(Config.serverUrl+'/login/',{
             user: data.user,
             password: data.password
         })
@@ -107,7 +108,7 @@ export const setDataLogin = (name, value)=>{
 //-----------------LOAD DATA--------
 export const loadBusinessData = token =>{
     return dispatch =>{
-        return axios.get('http://localhost:3000/user/business',{
+        return axios.get(Config.serverUrl+'/user/business',{
             // headers: {'x-access-token': 'eyJhbGciOiJIUzI1NiJ9.Z2x1bXN1cw.FTJ7lS9QyrUT7alfi-tREMgsz6_X4NakgLWinMxNaD4'}
             headers: {'x-access-token': token}
         })
@@ -142,7 +143,7 @@ export const loadBusinessData = token =>{
 
 export const loadPersonData = token =>{
     return dispatch =>{
-        return axios.get('http://localhost:3000/user/person',{
+        return axios.get(Config.serverUrl+'/user/person',{
             headers: {'x-access-token': token}
         })
         .then(function (response) {

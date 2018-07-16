@@ -21,7 +21,7 @@ module.exports = {
         contentBase: './dist'
     },
     externals: {
-        'Config': JSON.stringify(production ? require('./config.prod.json') : require('./config.dev.json'))
+        'Config': JSON.stringify(process.env.WEBPACK_MODE === 'production' ? require('./config.prod.json') : require('./config.dev.json'))
     },
 
     module: {
