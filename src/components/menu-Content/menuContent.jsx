@@ -15,7 +15,7 @@ const listCategories = props.menuCategories.map((item) =>
     return(
         <div className="content">
             <div className="carta" >
-                <form onSubmit={hanldeSubmit} onChange={props.handleChange} >
+                <form onSubmit={props.hanldeMenuSubmit} onChange={props.handleChange} >
                     <select name="category" >
                         {listCategories}
                     </select>

@@ -172,3 +172,10 @@ export const setNavigationFilter = (filter)=>({
     type: type.SET_NAVIGATION_FILTER,
     filter
 })
+
+//-------------------menu-----------------
+export const setDataMenu = (name, value)=>{
+    return {type: type.TYPING_MENU,
+     name,
+     value}
+ }
