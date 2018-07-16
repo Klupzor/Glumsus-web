@@ -14,14 +14,14 @@ class MenuContent extends Component{
       }
 
       typingMenu(event){
-          console.log('nombre', event.target.name)
-          console.log('value', event.target.value)
+        //   console.log('nombre', event.target.name)
+        //   console.log('value', event.target.value)
         this.props.dispatch(setDataMenu(event.target.name, event.target.value))
       }
 
       createMenu(event){
           event.preventDefault()
-          this.props.dispatch(setMenu(this.props.menuData))
+          this.props.dispatch(setMenu(this.props.menuData, this.props.llave))
       }
 
     render(){
@@ -61,7 +61,8 @@ function mapStateToProps(state){
     return{
      menuCategories: state.userData.menuCategories,
      busId: state.userData.busId,
-     menuData: state.menuData
+     menuData: state.menuData,
+     llave: state.userData.token
         
     }
 }

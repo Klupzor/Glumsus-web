@@ -181,7 +181,7 @@ export const setDataMenu = (name, value)=>{
      value}
  }
 
- export const setMenu = (data) =>{
+ export const setMenu = (data, token) =>{
     return dispatch => {
         return axios.post(Config.serverUrl+'/menu/'+data.category,{
             name: data.name,
@@ -191,9 +191,7 @@ export const setDataMenu = (name, value)=>{
         .then(function (response) {
             // console.log(response);
             if (response.data.success) {
-                dispatch({
-                    type: type.ERASING_USER_DATA
-                })
+                dispatch(loadBusinessData(token))
                 
                 console.log('guardado el menu!!')
             }
