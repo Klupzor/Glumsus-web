@@ -1,34 +1,65 @@
-import React from 'react'
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import MenuList from './menuList.jsx';
+import { setDataMenu } from '../../actions';
 
-function MenuContent(props){
-const listItems = props.menuCategories.map((item) =>
-    <div key={item._id}>
-        <span >{item.name}</span>
-        <MenuList {...item} />
-    </div>
-);
+class MenuContent extends Component{
+    constructor(props){
+        super(props)
+        
+        this.createMenu = this.createMenu.bind(this)
+        this.typingMenu = this.typingMenu.bind(this)
 
-const listCategories = props.menuCategories.map((item) =>
-        <option value={item.name} key={item._id}>{item.name}</option>
-);
-    return(
-        <div className="content">
-            <div className="carta" >
-                <form onSubmit={props.hanldeMenuSubmit} onChange={props.handleChange} >
-                    <select name="category" >
-                        {listCategories}
-                    </select>
-                    <input type="text" name="name" placeholder="Nombre del plato" />
-                    <input type="text" name="description" placeholder="Descripción" />
-                    <input type="number" name="price" placeholder="Precio" step="50"/>
-                    <input type="submit" value="Agregar plato" />
+      }
 
-                </form>
-                <div>{listItems}</div>
+      typingMenu(event){
+        //   console.log('nombre', event.target.name)
+        //   console.log('value', event.target.value)
+        this.props.dispatch(setDataMenu(event.target.name, event.target.value))
+      }
+
+      createMenu(event){
+          event.preventDefault()
+      }
+
+    render(){
+        const listItems = this.props.menuCategories.map((item) =>
+            <div key={item._id}>
+                <span >{item.name}</span>
+                <MenuList {...item} />
             </div>
-        </div>
-        )
+        );
+        
+        const listCategories = this.props.menuCategories.map((item) =>
+                <option value={item.name} key={item._id}>{item.name}</option>
+        );
+            return(
+                <div className="content">
+                    <div className="carta" >
+                        <form onSubmit={this.createMenu} onChange={this.typingMenu} >
+                            <select name="category" >
+                                {listCategories}
+                            </select>
+                            <input type="text" name="name" placeholder="Nombre del plato" />
+                            <input type="text" name="description" placeholder="Descripción" />
+                            <input type="number" name="price" placeholder="Precio" step="50"/>
+                            <input type="submit" value="Agregar plato" />
+        
+                        </form>
+                        <div>{listItems}</div>
+                    </div>
+                </div>
+                )
+
+    }
 }
 
-export default MenuContent
+function mapStateToProps(state){
+    return{
+     menuCategories: state.userData.menuCategories,
+     busId: state.userData.busId
+        
+    }
+}
+
+export default connect (mapStateToProps) (MenuContent)
