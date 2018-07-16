@@ -20,6 +20,9 @@ module.exports = {
     devServer: {
         contentBase: './dist'
     },
+    externals: {
+        'Config': JSON.stringify(production ? require('./config.prod.json') : require('./config.dev.json'))
+    },
 
     module: {
         rules: [
