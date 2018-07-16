@@ -180,3 +180,35 @@ export const setDataMenu = (name, value)=>{
      name,
      value}
  }
+
+ export const setMenu = (data) =>{
+    return dispatch => {
+        return axios.post(Config.serverUrl+'/menu/'+data.category,{
+            name: data.name,
+            description: data.description,
+            price: data.price
+        })
+        .then(function (response) {
+            // console.log(response);
+            if (response.data.success) {
+                dispatch({
+                    type: type.ERASING_USER_DATA
+                })
+                
+                console.log('guardado el menu!!')
+            }
+            
+              dispatch({
+                type: type.GET_DATA_SERVER,
+                success: response.data.success,
+                message: response.data.message,
+                status: response.status,
+                statusText: response.statusText,
+              })
+
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    }
+}

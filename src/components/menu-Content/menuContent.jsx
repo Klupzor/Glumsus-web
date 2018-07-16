@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import MenuList from './menuList.jsx';
 import { setDataMenu } from '../../actions';
+import { setMenu } from './../../actions/index';
 
 class MenuContent extends Component{
     constructor(props){
@@ -13,13 +14,14 @@ class MenuContent extends Component{
       }
 
       typingMenu(event){
-        //   console.log('nombre', event.target.name)
-        //   console.log('value', event.target.value)
+          console.log('nombre', event.target.name)
+          console.log('value', event.target.value)
         this.props.dispatch(setDataMenu(event.target.name, event.target.value))
       }
 
       createMenu(event){
           event.preventDefault()
+          this.props.dispatch(setMenu(this.props.menuData))
       }
 
     render(){
@@ -30,8 +32,9 @@ class MenuContent extends Component{
             </div>
         );
         
+        //agregando las categorias existentes del menu del negocio
         const listCategories = this.props.menuCategories.map((item) =>
-                <option value={item.name} key={item._id}>{item.name}</option>
+                <option value={item._id} key={item._id}>{item.name}</option>
         );
             return(
                 <div className="content">
@@ -57,7 +60,8 @@ class MenuContent extends Component{
 function mapStateToProps(state){
     return{
      menuCategories: state.userData.menuCategories,
-     busId: state.userData.busId
+     busId: state.userData.busId,
+     menuData: state.menuData
         
     }
 }
