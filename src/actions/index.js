@@ -251,3 +251,32 @@ export const setDataCategory = (name)=>{
           });
     }
 }
+
+export const deleteMenuData = (idMenu, token) =>{
+    return dispatch => {
+        return axios.delete(Config.serverUrl+'/menu/'+idMenu,{})
+        .then(function (response) {
+            // console.log(response);
+            if (response.data.success) {
+                dispatch(loadBusinessData(token))
+                
+                console.log('borrado el menu!!')
+                // dispatch({
+                //     type: type.ERASING_MENU_DATA
+                // })
+            }
+            
+              dispatch({
+                type: type.GET_DATA_SERVER,
+                success: response.data.success,
+                message: response.data.message,
+                status: response.status,
+                statusText: response.statusText,
+              })
+
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    }
+}

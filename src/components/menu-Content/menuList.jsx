@@ -6,7 +6,9 @@ const listItems = props.menus.map((item) =>
     <span>{item.name}</span>
     <span>Descripcion: {item.description}</span>
     <span>Precio: {item.price}</span>
-
+    <button onClick={()=> props.deleteMenu(item._id)} >
+        <i>borrar</i>
+    </button>
   </div>
 );
     return(

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import MenuList from './menuList.jsx';
-import { setDataMenu, setDataCategory, setMenu, setCategory } from '../../actions';
+import { setDataMenu, setDataCategory, setMenu, setCategory, deleteMenuData } from '../../actions';
 
 
 class MenuContent extends Component{
@@ -12,6 +12,7 @@ class MenuContent extends Component{
         this.typingMenu = this.typingMenu.bind(this)
         this.typingCategory = this.typingCategory.bind(this)
         this.createCategory = this.createCategory.bind(this)
+        this.deleteMenu = this.deleteMenu.bind(this)
 
       }
 
@@ -35,11 +36,15 @@ class MenuContent extends Component{
         this.props.dispatch(setCategory(this.props.menuData.newCategory, this.props.busId, this.props.llave))
     }
 
+    deleteMenu(id){
+        this.props.dispatch(deleteMenuData(id, this.props.llave))
+    }
+
     render(){
         const listItems = this.props.menuCategories.map((item) =>
             <div key={item._id}>
                 <span >{item.name}</span>
-                <MenuList {...item} />
+                <MenuList {...item} deleteMenu={this.deleteMenu}/>
             </div>
         );
         
