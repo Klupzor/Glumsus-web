@@ -213,3 +213,41 @@ export const setDataMenu = (name, value)=>{
           });
     }
 }
+
+export const setDataCategory = (name)=>{
+    return {
+        type: type.TYPING_CATEGORY,
+        name
+    }
+ }
+
+ export const setCategory = (data, busId, token) =>{
+    return dispatch => {
+        return axios.post(Config.serverUrl+'/menu/categ/'+busId,{
+            name: data
+        })
+        .then(function (response) {
+            // console.log(response);
+            if (response.data.success) {
+                dispatch(loadBusinessData(token))
+                
+                console.log('Creada la categoria!!')
+                dispatch({
+                    type: type.ERASING_MENU_DATA
+                })
+            }
+            
+              dispatch({
+                type: type.GET_DATA_SERVER,
+                success: response.data.success,
+                message: response.data.message,
+                status: response.status,
+                statusText: response.statusText,
+              })
+
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    }
+}

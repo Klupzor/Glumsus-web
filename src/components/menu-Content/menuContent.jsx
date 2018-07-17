@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import MenuList from './menuList.jsx';
-import { setDataMenu } from '../../actions';
-import { setMenu } from './../../actions/index';
+import { setDataMenu, setDataCategory, setMenu, setCategory } from '../../actions';
+
 
 class MenuContent extends Component{
     constructor(props){
@@ -10,6 +10,8 @@ class MenuContent extends Component{
         
         this.createMenu = this.createMenu.bind(this)
         this.typingMenu = this.typingMenu.bind(this)
+        this.typingCategory = this.typingCategory.bind(this)
+        this.createCategory = this.createCategory.bind(this)
 
       }
 
@@ -23,6 +25,15 @@ class MenuContent extends Component{
           event.preventDefault()
           this.props.dispatch(setMenu(this.props.menuData, this.props.llave))
       }
+
+      typingCategory(event){
+        this.props.dispatch(setDataCategory(event.target.value))
+      }
+
+      createCategory(event){
+        event.preventDefault()
+        this.props.dispatch(setCategory(this.props.menuData.newCategory, this.props.busId, this.props.llave))
+    }
 
     render(){
         const listItems = this.props.menuCategories.map((item) =>
@@ -39,6 +50,10 @@ class MenuContent extends Component{
             return(
                 <div className="content">
                     <div className="carta" >
+                        <form onSubmit={this.createCategory} >
+                            <input type="text" value={this.props.menuData.newCategory} onChange={this.typingCategory} placeholder="Agregar nueva Categoria" />
+                            <input type="submit" value="Crear" />
+                        </form>
                         <form onSubmit={this.createMenu} onChange={this.typingMenu} >
                             <select name="category" >
                             <option value="">...</option>

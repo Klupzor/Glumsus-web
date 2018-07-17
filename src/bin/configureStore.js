@@ -28,7 +28,8 @@ const initialState = {
         name: "",
         description: "",
         price: "",
-        category: ""
+        category: "",
+        newCategory: ""
     }
        
 }

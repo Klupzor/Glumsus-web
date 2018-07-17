@@ -32,12 +32,18 @@ const menuData = (state=[], action)=>{
                         return state
                 }
         case type.ERASING_MENU_DATA:
-                return{
-                    ...state,
-                    name: "",
-                    description: "",
-                    price: ""
-                }
+            return{
+                ...state,
+                name: "",
+                description: "",
+                price: "",
+                newCategory: ""
+            }
+        case type.TYPING_CATEGORY:
+            return{
+                ...state,
+                newCategory: action.name
+            }
         default:
             return state
     }
