@@ -13,7 +13,7 @@ export const setSignup = data => {
         })
         .then(function (response) {
             // console.log(response);
-            if (response.data.succes) {
+            if (response.data.success) {
                 dispatch({
                     type: type.ERASING_DATA
                 })
@@ -21,7 +21,7 @@ export const setSignup = data => {
             }
             dispatch({
                 type: type.SET_SIGNUP,
-                succes: response.data.succes,
+                success: response.data.success,
                 message: response.data.message,
                 status: response.status,
                 statusText: response.statusText
@@ -194,6 +194,9 @@ export const setDataMenu = (name, value)=>{
                 dispatch(loadBusinessData(token))
                 
                 console.log('guardado el menu!!')
+                dispatch({
+                    type: type.ERASING_MENU_DATA
+                })
             }
             
               dispatch({

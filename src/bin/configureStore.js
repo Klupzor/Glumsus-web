@@ -2,6 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk'
 import rootReducer from './../reducers';
 import { VisibilityFilters, NavigationFilters } from './../actions/actionType';
+import menuData from './../reducers/menuData';
 
 const initialState = {
     data: {
@@ -22,6 +23,12 @@ const initialState = {
     },
     navigationFilter: {
         filter: NavigationFilters.SHOW_HOME_CONTENT
+    },
+    menuData: {
+        name: "",
+        description: "",
+        price: "",
+        category: ""
     }
        
 }

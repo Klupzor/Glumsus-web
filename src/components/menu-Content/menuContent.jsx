@@ -41,11 +41,12 @@ class MenuContent extends Component{
                     <div className="carta" >
                         <form onSubmit={this.createMenu} onChange={this.typingMenu} >
                             <select name="category" >
+                            <option value="">...</option>
                                 {listCategories}
                             </select>
-                            <input type="text" name="name" placeholder="Nombre del plato" />
-                            <input type="text" name="description" placeholder="Descripción" />
-                            <input type="number" name="price" placeholder="Precio" step="50"/>
+                            <input type="text" value={this.props.menuData.name} name="name" placeholder="Nombre del plato" />
+                            <input type="text" value={this.props.menuData.description} name="description" placeholder="Descripción" />
+                            <input type="number" value={this.props.menuData.price} name="price" placeholder="Precio" step="50"/>
                             <input type="submit" value="Agregar plato" />
         
                         </form>

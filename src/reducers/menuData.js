@@ -31,6 +31,13 @@ const menuData = (state=[], action)=>{
                     default:
                         return state
                 }
+        case type.ERASING_MENU_DATA:
+                return{
+                    ...state,
+                    name: "",
+                    description: "",
+                    price: ""
+                }
         default:
             return state
     }

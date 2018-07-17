@@ -9,6 +9,8 @@ export const SET_LOGIN = 'SET_LOGIN'
 export const TYPING_LOGIN = 'TYPING_LOGIN'
 export const TYPING_MENU = 'TYPING_MENU'
 export const SET_MENU = 'SET_MENU'
+export const ERASING_MENU_DATA = 'ERASING_MENU_DATA'
+
 
 export const ERASING_USER_DATA = 'ERASING_USER_DATA'
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
