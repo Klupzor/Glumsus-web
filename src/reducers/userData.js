@@ -34,6 +34,7 @@ const userData = (state=[], action)=>{
             ...state,
             user: action.user,
             panel: action.panel,
+            aboutUs: action.aboutUs,
             cell: action.cell,
             businessName: action.name,
             busId: action.busId,
@@ -48,6 +49,11 @@ const userData = (state=[], action)=>{
             loginPerson: true
             }
             
+        case type.TYPING_ABOUT_US:
+            return {
+            ...state,
+            aboutUs: action.aboutUs
+            }
         default:
             return state
     }

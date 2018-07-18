@@ -109,7 +109,6 @@ export const setDataLogin = (name, value)=>{
 export const loadBusinessData = token =>{
     return dispatch =>{
         return axios.get(Config.serverUrl+'/user/business',{
-            // headers: {'x-access-token': 'eyJhbGciOiJIUzI1NiJ9.Z2x1bXN1cw.FTJ7lS9QyrUT7alfi-tREMgsz6_X4NakgLWinMxNaD4'}
             headers: {'x-access-token': token}
         })
         .then(function (response) {
@@ -118,6 +117,7 @@ export const loadBusinessData = token =>{
                 dispatch({
                     type: type.LOAD_BUSINESS_DATA,
                     user: response.data.business.user,
+                    aboutUs: response.data.business.aboutUs,
                     panel: response.data.business.panel,
                     cell: response.data.business.cell,
                     name: response.data.business.name,
@@ -290,6 +290,49 @@ export const deleteCategoryData = (idCateg, token) =>{
                 dispatch(loadBusinessData(token))
                 
                 console.log('borrada la categoria!')
+                // dispatch({
+                //     type: type.ERASING_MENU_DATA
+                // })
+            }
+            
+              dispatch({
+                type: type.GET_DATA_SERVER,
+                success: response.data.success,
+                message: response.data.message,
+                status: response.status,
+                statusText: response.statusText,
+              })
+
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    }
+}
+
+// ----------------------about us ----------------------
+
+export const setAboutData = aboutUs => ({
+    type: type.TYPING_ABOUT_US,
+    aboutUs
+})
+
+export const modifyAboutUs = (aboutUs, token) =>{
+    return dispatch => {
+        return axios({
+            method: 'put',
+            url: Config.serverUrl+'/user/business/about',
+            headers: {'x-access-token': token},
+            data: {
+                aboutUs
+            }
+        })
+        .then(function (response) {
+            // console.log(response);
+            if (response.data.success) {
+                dispatch(loadBusinessData(token))
+                
+                console.log('modificado About us!')
                 // dispatch({
                 //     type: type.ERASING_MENU_DATA
                 // })
