@@ -331,11 +331,7 @@ export const modifyAboutUs = (aboutUs, token) =>{
             // console.log(response);
             if (response.data.success) {
                 dispatch(loadBusinessData(token))
-                
-                console.log('modificado About us!')
-                // dispatch({
-                //     type: type.ERASING_MENU_DATA
-                // })
+                alert('Modificado!')
             }
             
               dispatch({
