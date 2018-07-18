@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import MenuList from './menuList.jsx';
-import { setDataMenu, setDataCategory, setMenu, setCategory, deleteMenuData } from '../../actions';
+import { setDataMenu, setDataCategory, setMenu, setCategory, deleteMenuData, deleteCategoryData } from '../../actions';
 
 
 class MenuContent extends Component{
@@ -40,10 +40,17 @@ class MenuContent extends Component{
         this.props.dispatch(deleteMenuData(id, this.props.llave))
     }
 
+    deleteCategory(id){
+        this.props.dispatch(deleteCategoryData(id, this.props.llave))
+    }
+
     render(){
         const listItems = this.props.menuCategories.map((item) =>
             <div key={item._id}>
                 <span >{item.name}</span>
+                <button onClick={()=> this.deleteCategory(item._id)} >
+                    <i>borrar</i>
+                </button>
                 <MenuList {...item} deleteMenu={this.deleteMenu}/>
             </div>
         );
