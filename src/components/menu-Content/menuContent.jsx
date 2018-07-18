@@ -37,11 +37,17 @@ class MenuContent extends Component{
     }
 
     deleteMenu(id){
-        this.props.dispatch(deleteMenuData(id, this.props.llave))
+        let confirmMessage = confirm("Desea borrar el elemento?")
+        if (confirmMessage) {
+            this.props.dispatch(deleteMenuData(id, this.props.llave))
+        }
     }
 
     deleteCategory(id){
-        this.props.dispatch(deleteCategoryData(id, this.props.llave))
+        let confirmMessage = confirm("Desea borrar la categoria con todo su contenido?")
+        if (confirmMessage) {
+            this.props.dispatch(deleteCategoryData(id, this.props.llave))
+        }
     }
 
     render(){
