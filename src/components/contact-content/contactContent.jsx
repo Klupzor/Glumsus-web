@@ -24,18 +24,13 @@ class ContactContent extends Component{
     }
 
     handleAddress(){
-        console.log('pidiendo direccion')
         var address = this.props.address
         var geocoder = new google.maps.Geocoder();
         var dispatch = this.props.dispatch
-              
-             
             geocoder.geocode({'address': address},(results, status) => {
             if (status === 'OK') {
                 const lat = results[0].geometry.location.lat()
                 const lng = results[0].geometry.location.lng()
-                console.log('latitud: ', lat)
-                console.log('longitud: ',lng)
                 dispatch(seeLocation(lat, lng))
                 var uluru = {lat: lat, lng: lng};
                 var map = new google.maps.Map(document.getElementById('map'), {
@@ -50,13 +45,9 @@ class ContactContent extends Component{
                     alert('Geocode was not successful for the following reason: ' + status);
                   }
                 });
-                
     }
-
     render(){
-              
         return(
-            
             <div className="content">
                 <div className="contact-us" >
                     <form  onSubmit={this.handleSubmit} >
@@ -77,10 +68,8 @@ class ContactContent extends Component{
                     <button onClick={this.handleAddress} >Visualizar</button>
                 </div>
                 <Map/>
-
             </div>
         )
-
     }
 }
 
