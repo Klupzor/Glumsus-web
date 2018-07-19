@@ -1,6 +1,7 @@
 import * as type from './actionType'
 import axios from 'axios';
 import Config from 'Config'
+import data from './../reducers/data';
 // -------------sign in------------------
 export const setSignup = data => {
     return dispatch => {
@@ -373,7 +374,8 @@ export const setDataContact = (name, value)=>({
                 address: data.address,
                 phone: data.phone,
                 businessHours: data.businessHours,
-
+                lat: data.lat,
+                lng: data.lng
             }
         })
         .then(function (response) {
@@ -397,3 +399,9 @@ export const setDataContact = (name, value)=>({
           });
     }
 } 
+
+export const seeLocation = (lat, lng)=>({
+    type: type.SEE_LOCATION,
+     lat,
+     lng
+ })

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import scriptLoader from 'react-async-script-loader'
 import {connect} from 'react-redux'
-import { setDataContact, modifyContact } from '../../actions';
+import { setDataContact, modifyContact, seeLocation } from '../../actions';
 
 @scriptLoader(['https://maps.googleapis.com/maps/api/js?key=AIzaSyD0nBkgLXCVDDnJ3Ba7sQ62TI5yxS8sfzA'])
 
@@ -24,19 +24,32 @@ class ContactContent extends Component{
 
     handleAddress(){
         console.log('pidiendo direccion')
+        var address = this.props.address
         var geocoder = new google.maps.Geocoder();
-        function geocodeAddress(geocoder, resultsMap) {
-            var address = 'Calle 7b #25-13, sogamoso'
-            geocoder.geocode({'address': address}, function(results, status) {
+        var dispatch = this.props.dispatch
+              
+             
+            geocoder.geocode({'address': address},(results, status) => {
             if (status === 'OK') {
-                console.log('latitud: ', results[0].geometry.location.lat())
-                console.log('longitud: ',results[0].geometry.location.lng())
+                const lat = results[0].geometry.location.lat()
+                const lng = results[0].geometry.location.lng()
+                console.log('latitud: ', lat)
+                console.log('longitud: ',lng)
+                dispatch(seeLocation(lat, lng))
+                var uluru = {lat: lat, lng: lng};
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 17,
+                    center: uluru
+                });
+                var marker = new google.maps.Marker({
+                    position: uluru,
+                    map: map
+                });
                 } else {
                     alert('Geocode was not successful for the following reason: ' + status);
                   }
                 });
-        }
-      geocodeAddress(geocoder)
+                
     }
 
     //cargando api google maps

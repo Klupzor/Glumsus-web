@@ -48,6 +48,13 @@ const userData = (state=[], action)=>{
             loginBusiness: true
             }
 
+        case type.SEE_LOCATION:
+            return {
+            ...state,
+            lat: action.lat,
+            lng: action.lng
+            }
+
         case type.LOAD_PERSON_DATA:
             return {
             ...state,
