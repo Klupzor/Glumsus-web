@@ -38,6 +38,8 @@ const userData = (state=[], action)=>{
             phone: action.phone,
             address: action.address,
             aboutUs: action.aboutUs,
+            lat: action.lat,
+            lng: action.lng,
             businessHours: action.businessHours,
             cell: action.cell,
             businessName: action.name,

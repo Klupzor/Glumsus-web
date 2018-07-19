@@ -42,7 +42,7 @@ class ContactContent extends Component{
     //cargando api google maps
     componentWillReceiveProps({isScriptLoadSucceed}){
         if (isScriptLoadSucceed) {
-            var uluru = {lat: 5.718672499999999, lng: -72.94102559999999};
+            var uluru = {lat: this.props.lat, lng: this.props.lng};
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 17,
                 center: uluru
@@ -95,6 +95,8 @@ function mapStateToProps(state){
      phone: state.userData.phone,
      address: state.userData.address,
      businessHours: state.userData.businessHours,
+     lat: state.userData.lat,
+     lng: state.userData.lng
         
     }
 }

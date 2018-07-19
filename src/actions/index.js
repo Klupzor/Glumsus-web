@@ -123,6 +123,8 @@ export const loadBusinessData = token =>{
                     name: response.data.business.name,
                     email: response.data.business.email,
                     phone: response.data.business.phone,
+                    lng: response.data.business.lng,
+                    lat: response.data.business.lat,
                     address: response.data.business.address,
                     businessHours: response.data.business.businessHours,
                     busId: response.data.business._id,
