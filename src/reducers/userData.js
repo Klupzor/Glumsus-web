@@ -34,7 +34,11 @@ const userData = (state=[], action)=>{
             ...state,
             user: action.user,
             panel: action.panel,
+            email: action.email,
+            phone: action.phone,
+            address: action.address,
             aboutUs: action.aboutUs,
+            businessHours: action.businessHours,
             cell: action.cell,
             businessName: action.name,
             busId: action.busId,
@@ -53,6 +57,32 @@ const userData = (state=[], action)=>{
             return {
             ...state,
             aboutUs: action.aboutUs
+            }
+
+        case type.TYPING_CONTACT:
+            switch (action.name) {
+                case "phone":
+                    return{
+                        ...state,
+                        phone: action.value
+                    }
+                case "email":
+                    return{
+                        ...state,
+                        email: action.value
+                    }
+                case "address":
+                    return{
+                        ...state,
+                        address: action.value
+                    }
+                case "businessHours":
+                    return{
+                        ...state,
+                        businessHours: action.value
+                    }
+            
+                
             }
         default:
             return state

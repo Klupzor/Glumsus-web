@@ -121,6 +121,10 @@ export const loadBusinessData = token =>{
                     panel: response.data.business.panel,
                     cell: response.data.business.cell,
                     name: response.data.business.name,
+                    email: response.data.business.email,
+                    phone: response.data.business.phone,
+                    address: response.data.business.address,
+                    businessHours: response.data.business.businessHours,
                     busId: response.data.business._id,
                     menuCategories: response.data.business.menuCategories
                 })
@@ -348,3 +352,46 @@ export const modifyAboutUs = (aboutUs, token) =>{
           });
     }
 }
+
+// ---------------------------------- Informacion negocio-------------------------------------
+export const setDataContact = (name, value)=>({
+    type: type.TYPING_CONTACT,
+     name,
+     value
+ })
+
+ export const modifyContact = (data, token) =>{
+    return dispatch => {
+        return axios({
+            method: 'put',
+            url: Config.serverUrl+'/user/business/about',
+            headers: {'x-access-token': token},
+            data: {
+                email: data.email,
+                address: data.address,
+                phone: data.phone,
+                businessHours: data.businessHours,
+
+            }
+        })
+        .then(function (response) {
+            // console.log(response);
+            if (response.data.success) {
+                dispatch(loadBusinessData(token))
+                alert('Modificado!')
+            }
+            
+              dispatch({
+                type: type.GET_DATA_SERVER,
+                success: response.data.success,
+                message: response.data.message,
+                status: response.status,
+                statusText: response.statusText,
+              })
+
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    }
+} 
