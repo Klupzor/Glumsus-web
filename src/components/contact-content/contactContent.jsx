@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import scriptLoader from 'react-async-script-loader'
 import {connect} from 'react-redux'
-import { setDataCategory, setDataContact, modifyContact } from '../../actions';
+import { setDataContact, modifyContact } from '../../actions';
 
 @scriptLoader(['https://maps.googleapis.com/maps/api/js?key=AIzaSyD0nBkgLXCVDDnJ3Ba7sQ62TI5yxS8sfzA'])
 
@@ -10,6 +10,7 @@ class ContactContent extends Component{
         super(props)
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleAddress = this.handleAddress.bind(this)
     }
 
     handleChange(event){
@@ -21,13 +22,34 @@ class ContactContent extends Component{
         this.props.dispatch(modifyContact(this.props, this.props.llave))
     }
 
+    handleAddress(){
+        console.log('pidiendo direccion')
+        var geocoder = new google.maps.Geocoder();
+        function geocodeAddress(geocoder, resultsMap) {
+            var address = 'Calle 7b #25-13, sogamoso'
+            geocoder.geocode({'address': address}, function(results, status) {
+            if (status === 'OK') {
+                console.log('latitud: ', results[0].geometry.location.lat())
+                console.log('longitud: ',results[0].geometry.location.lng())
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                  }
+                });
+        }
+      geocodeAddress(geocoder)
+    }
+
+    //cargando api google maps
     componentWillReceiveProps({isScriptLoadSucceed}){
         if (isScriptLoadSucceed) {
-            var markers = [];
-
-            var map = new window.google.maps.Map(document.getElementById('map'), {
-                zoom: 12,
-                center: {lat: 37.7749300, lng: -122.4194200}
+            var uluru = {lat: 5.718672499999999, lng: -72.94102559999999};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 17,
+                center: uluru
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
             });
         }
         else{
@@ -53,9 +75,9 @@ class ContactContent extends Component{
                         <label >Dirección del negocio 
                             <input type="text" name="address" value={this.props.address} onChange={this.handleChange} />
                         </label>
-                        <button>Visualizar</button>
                         <input type="submit" value="Actualizar" />
                     </form>
+                    <button onClick={this.handleAddress} >Visualizar</button>
                 </div>
                 <div id="map" style={{height: "600px"}}></div>
                 
