@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import { setDataContact, modifyContact, seeLocation } from '../../actions';
 import Map from './../map/map.jsx';
 
-@scriptLoader(['https://maps.googleapis.com/maps/api/js?key=AIzaSyD0nBkgLXCVDDnJ3Ba7sQ62TI5yxS8sfzA'])
+@scriptLoader(['https://maps.googleapis.com/maps/api/js?key="GoogleKey"'])
 
 class ContactContent extends Component{
     constructor(props){
